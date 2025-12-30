@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carta para mi amor</title>
+
+    <style>
+        body {
+            margin: 0;
+            background: linear-gradient(to bottom, #ffe6f0, #ffffff);
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+        }
+
+        .carta {
+            position: relative;
+            max-width: 650px;
+            margin: 70px auto;
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 18px;
+            box-shadow: 0 0 18px rgba(255, 105, 180, 0.4);
+            font-size: 18px;
+            text-align: center;
+            z-index: 2;
+        }
+
+        h2 {
+            color: #ff4d88;
+        }
+
+        p {
+            text-align: justify;
+            line-height: 1.7;
+        }
+
+        .firma {
+            color: #ff4d88;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
+        .btn-esposita {
+            margin-top: 25px;
+            padding: 14px 24px;
+            font-size: 18px;
+            border: none;
+            border-radius: 30px;
+            background: linear-gradient(45deg, #ff5fa2, #ff8ac5);
+            color: #ffffff;
+            cursor: pointer;
+        }
+
+        .mensaje {
+            display: none;
+            margin-top: 20px;
+            font-size: 20px;
+            color: #ff4d88;
+            font-weight: bold;
+        }
+
+        .heart {
+            position: fixed;
+            top: -10px;
+            color: pink;
+            font-size: 20px;
+            animation: fall linear infinite;
+            z-index: 1;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-10px);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh);
+                opacity: 0;
+            }
+        }
+
+        .musica {
+            margin-top: 15px;
+            font-size: 14px;
+            color: #777777;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="carta" id="carta">
+        <h2>💖 Para ti, mi amor 💖</h2>
+
+        <p>
+            Gracias por estar a mi lado a pesar de que soy una persona inestable.
+            Te amo mucho, me encanta cada parte de ti, amo cada parte de ti y
+            amo estar a tu lado.
+        </p>
+
+        <p>
+            Gracias por todo lo vivido, amor. Cada momento contigo se queda
+            en mi corazón.
+        </p>
+
+        <p>
+            Te amo, y decirlo me pone nervioso, porque lo que siento por ti
+            es real, sincero y profundo.
+        </p>
+
+        <div class="firma">
+            Juan Manuel 💕
+        </div>
+
+        <button class="btn-esposita" id="btnEsposita">
+            💍 ¿Quieres ser mi esposita?
+        </button>
+
+        <div class="mensaje" id="mensaje">
+            💖 Prometo amarte hoy y siempre 💖
+        </div>
+
+        <div class="musica">
+            💕 Toca la pantalla para activar nuestra canción 🎶
+        </div>
+    </div>
+
+    <!-- Reproductor oculto -->
+    <iframe
+        id="player"
+        width="0"
+        height="0"
+        src="https://www.youtube.com/embed/0A7sH9X3AjI?autoplay=1&mute=1"
+        allow="autoplay; encrypted-media"
+        title="Aprender a quererte - Morat">
+    </iframe>
+
+    <script>
+        // Corazones animados
+        function crearCorazon() {
+            const corazon = document.createElement("div");
+            corazon.className = "heart";
+            corazon.textContent = "💗";
+            corazon.style.left = Math.random() * 100 + "vw";
+            corazon.style.fontSize = (Math.random() * 20 + 15) + "px";
+            corazon.style.animationDuration = (Math.random() * 3 + 3) + "s";
+
+            document.body.appendChild(corazon);
+
+            setTimeout(function () {
+                corazon.remove();
+            }, 6000);
+        }
+
+        setInterval(crearCorazon, 300);
+
+        // Activar música al primer toque
+        let musicaActiva = false;
+        document.addEventListener("click", function () {
+            if (!musicaActiva) {
+                const player = document.getElementById("player");
+                player.src = player.src.replace("mute=1", "mute=0");
+                musicaActiva = true;
+            }
+        });
+
+        // Botón esposita
+        const boton = document.getElementById("btnEsposita");
+        const mensaje = document.getElementById("mensaje");
+
+        boton.addEventListener("click", function () {
+            mensaje.style.display = "block";
+        });
+    </script>
+
+</body>
+</html>
